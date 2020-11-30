@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PIPE LINE</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <h1>WSI Processing Pipeline</h1>
+    <p>This the 1st version of website, still under development.</p>
+
+    <div>
+        <div class="left_col">
+
+            <h2>Step 1: Upload Whole Slide Image</h2>
+            
+            <h4>=> Please upload your XML file</h4> 
+            <form enctype="multipart/form-data" action="xml_uploader" method="POST">
+                <input type="file" name="xmlfile">
+                <input type="submit" value="Upload">
+            </form>
+
+            <h4>=> Please upload your SVS format WSI file</h4>
+            <form enctype="multipart/form-data" action="svs_uploader" method="POST">
+                <input type="file" name="svsfile">
+                <input type="submit" value="Upload">
+            </form>
+
+
+            <h2>Step 2: Patch Extraction</h2>
+            <form action="patch_extractor" method="POST">
+                <input type="text" value="{{uploaded_svs}}" name="svs_filename">
+                <button style="height: fit-content; font-weight: bold;color: green;">
+                    START
+                </button>
+            </form>
+
+            <h2>Step 3: DNN Pred</h2>
+            <form action="dnn_pred" method="POST">
+                <input type="text" value="{{uploaded_svs}}" name="svs_filename">
+                <button style="height: fit-content; font-weight: bold;color: green;">
+                    START
+                </button>
+            </form>
+
+            <h2>Step 4: Gen HeatMap</h2>
+            <form action="gen_heatmap" method="POST">
+                <input type="text" value="{{uploaded_svs}}" name="svs_filename">
+                <button style="height: fit-content; font-weight: bold;color: green;">
+                    START
+                </button>
+            </form>
+        </div>
+
+        <div class="mid_col">
+            <h2 style="text-align: center;">Image Display</h2>
+            <img src="{{wsi_png_image}}" alt="WSI Image" style="float: left; width: 49%;">
+            <img src="{{heatmap_greyscale_image}}" alt="HeatMap" style="float: right; width: 49%;">
+        </div>
+
+
+        <div class="right_col">
+ 
+            <h2 style="text-align: center;">Progress Bar</h2>
+
+            <h4>1.WSI upload</h4>
+            <p>You've uploaded:<br>{{uploaded_svs}}</p>
+
+            <h4>2.Patch Extraction</h4>
+            <p style="color: green;">{{patch_extract_status}}</p>
+            <p>Patch Extraction Time Cost: {{patch_extract_time}} Sec.</p>
+
+            <h4>3.DNN Model Prediction</h4>
+            <p style="color: green;">{{pred_status}}</p>
+            <p>DNN Pred Time Cost: {{pred_time}} Sec.</p>
+
+            <h4>4.Heatmap Generation</h4>
+
+            <form method="get" action="./static/heatmaps/{{uploaded_svs}}.png">
+                <button type="submit">Download</button>
+             </form>
+
+
+            <h3>Computing Resource Occupancy</h3>
+                <p>GPU1: </p>
+                <p>GPU2: </p>
+    
+        </div>
+
+        
+    </div>
+
+</body>
+
+</html>

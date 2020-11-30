@@ -1,0 +1,55 @@
+body {
+    background-color: lightcyan;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-size-adjust: 12;
+}
+
+.h2_style_mid {
+    color: coral;
+    text-align: center;
+}
+
+.left_col {
+    float: left;
+    width: 20%;
+    border-style: dashed;
+    border-color: chocolate;
+    border-width: 1px;
+}
+
+.button_1{
+    height: fit-content;
+    font-weight: bolder;
+    color: green;
+}
+
+.mid_col {
+    display: inline-block;
+    width: 60%;
+    border-style: dashed;
+    border-color: chocolate;
+    border-width: 1px;
+}
+
+.right_col {
+    float: right;
+    width: 19%;
+    border-style: dashed;
+    border-color: chocolate;
+    border-width: 1px;
+}
+
+.bottom_row {
+    float: bottom;
+    height: 150px;
+    text-align: center;
+    border-style: dashed;
+    border-color: grey;
+    border-width: 1px;
+}
