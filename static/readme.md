@@ -1,4 +1,4 @@
-### create folders under statics folder, as the tree structure below before using: (they store temp files)
+### create folders under static folder, as the tree structure below before using: (they store temp files)
 
 ```bash
 ./static/
