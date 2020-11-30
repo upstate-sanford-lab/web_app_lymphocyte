@@ -1,6 +1,6 @@
-### create folders as the tree structure below before using: (they store temp files)
+### create folders under statics folder, as the tree structure below before using: (they store temp files)
 
-./static/
+.
 +-- heatmaps
 +-- pred_result
 +-- styles.css
